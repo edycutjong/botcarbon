@@ -120,7 +120,7 @@ export function TrafficChart({ data, shieldActive }: TrafficChartProps) {
               tickLine={false}
               width={40}
             />
-            <Tooltip content={<ChartTooltip />} />
+            <Tooltip content={<ChartTooltip />} isAnimationActive={false} cursor={{ fill: 'transparent' }} />
             <Area
               type="monotone"
               dataKey="blocked"
