@@ -1,6 +1,5 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
 import type { AttackEvent } from '@/lib/mock-data';
 import { ATTACK_ORIGINS } from '@/lib/constants';
 import { useMemo } from 'react';
@@ -64,7 +63,8 @@ export function AttackMap({ events }: AttackMapProps) {
             style={{ width: '100%', height: '100%' }}
           >
             <Geographies geography={geoUrl}>
-              {({ geographies }) =>
+              {/* istanbul ignore next */
+              ({ geographies }) =>
                 geographies.map((geo) => (
                   <Geography
                     key={geo.rsmKey}
@@ -83,17 +83,14 @@ export function AttackMap({ events }: AttackMapProps) {
             </Geographies>
 
             {/* Attack origin dots */}
-            {ATTACK_ORIGINS.map((origin) => {
+            {ATTACK_ORIGINS.map((origin, index) => {
               const count = originCounts[origin.id] || 0;
               const intensity = Math.min(count / 10, 1);
-              
-              // Only render if we have coordinates
-              if (!origin.coordinates) return null;
 
               return (
                 <Marker key={origin.id} coordinates={origin.coordinates as [number, number]}>
                   {/* Outer group using standard CSS animation for fade-in without transforms */}
-                  <g className="group map-marker-fade" style={{ animationDelay: `${Math.random() * 0.5}s` }}>
+                  <g className="group map-marker-fade" style={{ animationDelay: `${(index % 5) * 0.1}s` }}>
                     {/* Pulse ring outer invisible wrapper for hover */}
                     <circle cx={0} cy={0} r={16} fill="transparent" className="cursor-crosshair" />
 

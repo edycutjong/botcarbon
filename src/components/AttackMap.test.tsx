@@ -1,7 +1,19 @@
 import { render, screen } from '@testing-library/react';
+import React from 'react';
 import { AttackMap } from './AttackMap';
 import { AttackEvent } from '@/lib/mock-data';
 import { ATTACK_ORIGINS } from '@/lib/constants';
+
+jest.mock('react-simple-maps', () => {
+  return {
+    ComposableMap: ({ children }: { children: React.ReactNode }) => <svg data-testid="rs-map">{children}</svg>,
+    Geographies: ({ children }: { children: (props: { geographies: Array<{ rsmKey: string, properties: Record<string, unknown> }> }) => React.ReactNode }) => {
+      return children({ geographies: [{ rsmKey: 'dummy', properties: {} }] });
+    },
+    Geography: () => <g data-testid="geography" />,
+    Marker: ({ children }: { children: React.ReactNode }) => <g data-testid="marker">{children}</g>,
+  };
+});
 
 const mockEvents: AttackEvent[] = [
   ...Array.from({ length: 15 }).map((_, i) => ({
