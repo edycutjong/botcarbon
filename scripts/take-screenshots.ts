@@ -56,6 +56,20 @@ async function main() {
     await page.screenshot({ path: path.join(OUT_DIR, 'dashboard-shield-off.png') });
   }
 
+  // 5. Snapshot: Attack Origins Map (scrolled into view)
+  console.log('Scrolling to Attack Origins Map...');
+  await page.locator('#attack-map-section').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(1000);
+  console.log('Taking screenshot: Attack Origins');
+  await page.screenshot({ path: path.join(OUT_DIR, 'dashboard-attack-origins.png') });
+
+  // 6. Snapshot: Threat Log (scrolled into view)
+  console.log('Scrolling to Threat Log...');
+  await page.locator('#attack-log-section').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(1000);
+  console.log('Taking screenshot: Threat Log');
+  await page.screenshot({ path: path.join(OUT_DIR, 'dashboard-threat-log.png') });
+
   await context.close();
   await browser.close();
 

@@ -70,6 +70,18 @@ async function main() {
     }
   });
 
+  // Scene 5: Attack Origins Map (scroll into view)
+  await recordScene(browser, 'broll-attack-origins', async (page) => {
+    await page.locator('#attack-map-section').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(4000);
+  });
+
+  // Scene 6: Threat Log (scroll into view)
+  await recordScene(browser, 'broll-threat-log', async (page) => {
+    await page.locator('#attack-log-section').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(4000);
+  });
+
   await browser.close();
   console.log('\n🎉 All separated B-Roll webm clips have been saved to docs/assets/');
 }

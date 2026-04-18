@@ -254,8 +254,8 @@ export default function DashboardPage() {
 
           {/* Bottom row: Attack map + Attack log */}
           <motion.div variants={fadeUp} className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-            <AttackMap events={attackLog} />
-            <AttackLog events={attackLog} shieldActive={shieldActive} />
+            <div id="attack-map-section"><AttackMap events={attackLog} /></div>
+            <div id="attack-log-section"><AttackLog events={attackLog} shieldActive={shieldActive} /></div>
           </motion.div>
         </motion.div>
       </main>
