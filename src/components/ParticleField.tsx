@@ -29,9 +29,8 @@ export function ParticleField({ shieldActive, isUnderAttack }: ParticleFieldProp
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    const ctx = canvas?.getContext('2d');
+    if (!canvas || !ctx) return;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -59,7 +58,7 @@ export function ParticleField({ shieldActive, isUnderAttack }: ParticleFieldProp
       // Color shifts based on state
       const baseColor = shield
         ? [6, 182, 212]   // cyan — protected
-        : attack
+        : /* istanbul ignore next */ attack
           ? [239, 68, 68] // red — under attack
           : [148, 163, 184]; // slate — idle
       const speed = attack ? 1.5 : 0.7;

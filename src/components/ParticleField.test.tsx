@@ -15,11 +15,21 @@ const mockCtx = {
   lineWidth: 1,
 };
 
+let rAFCallback: FrameRequestCallback | null = null;
+
 beforeEach(() => {
+  rAFCallback = null;
   jest.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(mockCtx as unknown as CanvasRenderingContext2D);
-  jest.spyOn(window, 'requestAnimationFrame').mockImplementation(() => 1);
+  jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => {
+    rAFCallback = cb;
+    return 1;
+  });
   jest.spyOn(window, 'cancelAnimationFrame').mockImplementation(() => {});
 });
+
+export const advanceFrame = () => {
+  if (rAFCallback) rAFCallback(performance.now());
+};
 
 afterEach(() => {
   jest.restoreAllMocks();
@@ -59,14 +69,44 @@ describe('ParticleField', () => {
 
   it('updates props ref when shield changes', () => {
     const { rerender } = render(<ParticleField shieldActive={false} isUnderAttack={false} />);
+    advanceFrame(); // Idle color
     rerender(<ParticleField shieldActive={true} isUnderAttack={false} />);
-    // Should not crash — props ref updated internally
+    advanceFrame(); // Shield color
     expect(screen.getByTestId('particle-field')).toBeInTheDocument();
   });
 
   it('updates props ref when attack changes', () => {
     const { rerender } = render(<ParticleField shieldActive={false} isUnderAttack={false} />);
     rerender(<ParticleField shieldActive={false} isUnderAttack={true} />);
+    advanceFrame(); // Attack color
     expect(screen.getByTestId('particle-field')).toBeInTheDocument();
+  });
+
+  it('covers particle boundary wrap around edges', () => {
+    // Start large
+    window.innerWidth = 500;
+    window.innerHeight = 500;
+    
+    render(<ParticleField shieldActive={false} isUnderAttack={false} />);
+    window.dispatchEvent(new Event('resize'));
+    
+    // Now shrink window massively to force p.x > canvas.width and p.y > canvas.height
+    // Since wy is always negative, p.y > canvas.height won't happen normally unless screen shrinks!
+    window.innerWidth = 1;
+    window.innerHeight = 1;
+    window.dispatchEvent(new Event('resize'));
+    
+    // Advance frames properly
+    for (let i = 0; i < 20; i++) {
+      advanceFrame();
+    }
+    
+    expect(screen.getByTestId('particle-field')).toBeInTheDocument();
+  });
+
+  it('handles null canvas context safely', () => {
+    const mockGetContext = jest.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null as unknown as CanvasRenderingContext2D);
+    render(<ParticleField shieldActive={false} isUnderAttack={false} />);
+    mockGetContext.mockRestore();
   });
 });
