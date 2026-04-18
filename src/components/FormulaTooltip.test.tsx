@@ -10,14 +10,16 @@ describe('FormulaTooltip component', () => {
     expect(screen.getByText(expectedLabel)).toBeInTheDocument();
   });
 
-  it('opens and displays formula explanation on click', () => {
+  it('opens and displays formula explanation on hover', () => {
     render(<FormulaTooltip />);
     
     // Initially closed
     expect(screen.queryByText('CARBON FORMULA')).not.toBeInTheDocument();
     
-    // Click trigger
-    fireEvent.click(screen.getByRole('button'));
+    const trigger = screen.getByRole('button').parentElement!;
+    
+    // Hover trigger
+    fireEvent.mouseEnter(trigger);
     
     // Check if open
     expect(screen.getByText('CARBON FORMULA')).toBeInTheDocument();
@@ -25,8 +27,8 @@ describe('FormulaTooltip component', () => {
     expect(screen.getByText(`${CO2_PER_KWH} kg CO₂/kWh`)).toBeInTheDocument();
     expect(screen.getByText(getFormulaExplanation())).toBeInTheDocument();
     
-    // Click again to close
-    fireEvent.click(screen.getByRole('button'));
+    // Unhover to close
+    fireEvent.mouseLeave(trigger);
     
     // Using AnimatePresence might leave it in the document until exit animation finishes, 
     // but in jsdom without framer-motion full anims often sync or easily queried. Let's not strictly check exit, 

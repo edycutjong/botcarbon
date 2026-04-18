@@ -9,10 +9,13 @@ export function FormulaTooltip() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative">
+    <div 
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <button
         id="formula-tooltip-trigger"
-        onClick={() => setIsOpen((prev) => !prev)}
         className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-border text-[10px] font-mono text-text-muted hover:border-cyan/30 hover:text-cyan transition-all"
       >
         <span>📐</span>
@@ -27,7 +30,7 @@ export function FormulaTooltip() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -5, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 top-full mt-2 w-80 glass-card p-4 z-50 border border-cyan/20"
+            className="absolute right-0 top-full mt-2 w-80 bg-bg-secondary p-4 z-50 border border-cyan/20 shadow-2xl rounded-xl"
           >
             <h3 className="text-xs font-bold text-cyan mb-3" style={{ fontFamily: 'var(--font-display)' }}>
               CARBON FORMULA
