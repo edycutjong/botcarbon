@@ -6,34 +6,37 @@ const mockEvents: AttackEvent[] = [
   {
     id: '1',
     timestamp: 1672531200000,
-    type: 'DDoS',
+    type: 'DDoS Flood',
     ip: '192.168.1.1',
-    country: 'US',
+    origin: 'United States',
+    originId: 'us',
+    statusCode: 403,
     path: '/api/login',
     blocked: true,
-    co2SavedKg: 0.001,
     responseTimeMs: 5,
   },
   {
     id: '2',
     timestamp: 1672531201000,
-    type: 'SQLi',
+    type: 'SQL Injection',
     ip: '192.168.1.2',
-    country: 'CN',
+    origin: 'China',
+    originId: 'cn',
+    statusCode: 200,
     path: '/api/data',
     blocked: false,
-    co2SavedKg: 0,
     responseTimeMs: 25,
   },
   ...Array.from({ length: 35 }).map((_, i) => ({
     id: `event-${i + 3}`,
     timestamp: 1672531202000 + i * 1000,
-    type: 'BotNet',
+    type: 'Bot Scraping' as const,
     ip: '10.0.0.1',
-    country: 'RU',
+    origin: 'Russia',
+    originId: 'ru',
+    statusCode: 403,
     path: '/',
     blocked: true,
-    co2SavedKg: 0.001,
     responseTimeMs: 8,
   })),
 ];
@@ -50,7 +53,7 @@ describe('AttackLog component', () => {
     expect(screen.getByText('36 blocked')).toBeInTheDocument();
     
     // Check the first event
-    expect(screen.getByText('DDoS')).toBeInTheDocument();
+    expect(screen.getByText('DDoS Flood')).toBeInTheDocument();
     expect(screen.getByText('192.168.1.1')).toBeInTheDocument();
     
     // "5ms" and "25ms"
@@ -58,7 +61,7 @@ describe('AttackLog component', () => {
     expect(screen.getByText('25ms')).toBeInTheDocument();
     
     // Unblocked event check
-    expect(screen.getByText('SQLi')).toBeInTheDocument();
+    expect(screen.getByText('SQL Injection')).toBeInTheDocument();
     
     // Verify slice: The last event we see should be event-30 (which is index 32 overall roughly, 1 + 1 + 30)
     // Actually slice is 0 to 30. So it renders 30 items.

@@ -7,26 +7,26 @@ const mockEvents: AttackEvent[] = [
   ...Array.from({ length: 15 }).map((_, i) => ({
     id: `event-${i}`,
     timestamp: Date.now(),
-    type: 'DDoS',
+    type: 'DDoS Flood' as const,
     ip: '192.168.1.1',
-    country: 'US',
+    origin: 'United States',
+    originId: ATTACK_ORIGINS[0].id,
+    statusCode: 403,
     path: '/',
     blocked: true,
-    co2SavedKg: 0.001,
     responseTimeMs: 5,
-    originId: ATTACK_ORIGINS[0].id, // First known origin
   })),
   {
     id: 'event-15',
     timestamp: Date.now(),
-    type: 'SQLi',
+    type: 'SQL Injection',
     ip: '10.0.0.1',
-    country: 'CN',
+    origin: 'China',
+    originId: 'unknown',
+    statusCode: 403,
     path: '/api',
     blocked: true,
-    co2SavedKg: 0.001,
     responseTimeMs: 15,
-    originId: 'unknown', // Unknown origin should be basically ignored for map, but counted or not matching any ATTACK_ORIGINS dot
   }
 ];
 

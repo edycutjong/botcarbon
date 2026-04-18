@@ -10,8 +10,8 @@ import { TrafficDataPoint } from '@/lib/mock-data';
 // Wait, the `ChartTooltip` is not exported. But I can trick it by finding the Tooltip mock, or I can just test the TrafficChart component. It's functional coverage.
 
 const mockData: TrafficDataPoint[] = [
-  { time: '10:00:00', timestamp: 1672531200000, passed: 100, blocked: 50 },
-  { time: '10:00:02', timestamp: 1672531202000, passed: 110, blocked: 60 },
+  { time: '10:00:00', timestamp: 1672531200000, passed: 100, blocked: 50, total: 150, kwhWasted: 0.05 },
+  { time: '10:00:02', timestamp: 1672531202000, passed: 110, blocked: 60, total: 170, kwhWasted: 0.06 },
 ];
 
 describe('TrafficChart component', () => {
