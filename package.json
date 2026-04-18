@@ -11,7 +11,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "ci": "npm run lint && npm run typecheck && npm run test:coverage",
-    "broll": "npx playwright test scripts/run-broll.ts --headed --project=chromium"
+    "broll": "ts-node scripts/record-broll.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.103.3",
