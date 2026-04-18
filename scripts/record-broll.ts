@@ -4,15 +4,8 @@ import fs from 'fs';
 
 const OUT_DIR = path.join(process.cwd(), 'docs', 'assets');
 
-async function main() {
-  if (!fs.existsSync(OUT_DIR)) {
-    fs.mkdirSync(OUT_DIR, { recursive: true });
-  }
-
-  console.log('Launching browser for B-Roll video...');
-  const browser = await chromium.launch({ headless: true });
-  
-  // Create context with video recording enabled
+async function recordScene(browser: any, sceneName: string, action: (page: any) => Promise<void>) {
+  console.log(`\n🎬 Preparing scene: ${sceneName}...`);
   const context = await browser.newContext({
     viewport: { width: 1440, height: 900 },
     recordVideo: {
@@ -22,51 +15,67 @@ async function main() {
   });
 
   const page = await context.newPage();
-
-  console.log('Navigating to dashboard (ensure Next.js is running on :3000)...');
   await page.goto('http://localhost:3000/');
+  await page.waitForTimeout(2000); // let initial animations settle
 
-  // Wait for initial animations to settle
-  await page.waitForTimeout(2000);
+  console.log(`🎥 Recording: ${sceneName}...`);
+  await action(page);
 
-  // Scene 1: Initial Attack (5s)
-  console.log('Recording B-Roll: Active Attack (5s)...');
-  await page.waitForTimeout(5000);
+  const videoPath = await page.video()?.path();
+  await context.close(); // finalizes the video file
 
-  // Scene 2: Formula Tooltip Hover (3s)
-  console.log('Hovering over Formula Tooltip...');
-  await page.hover('#formula-tooltip-trigger');
-  await page.waitForTimeout(3000);
-  await page.mouse.move(0, 0); // Unhover
-  await page.waitForTimeout(1000); // transition gap
+  if (videoPath && fs.existsSync(videoPath)) {
+    const finalPath = path.join(OUT_DIR, `${sceneName}.webm`);
+    fs.renameSync(videoPath, finalPath);
+    console.log(`✅ Saved ${sceneName}.webm`);
+  }
+}
 
-  // Scene 3: Toggle Attack OFF (Idle state)
-  console.log('Toggling Attack OFF...');
-  const attackBtn = page.locator('#attack-toggle');
-  if (await attackBtn.count() > 0) {
-    await attackBtn.click();
-    console.log('Recording B-Roll: Idle State (4s)...');
-    await page.waitForTimeout(4000);
+async function main() {
+  if (!fs.existsSync(OUT_DIR)) {
+    fs.mkdirSync(OUT_DIR, { recursive: true });
   }
 
-  // Scene 4: Toggle Shield OFF
-  console.log('Toggling Shield OFF...');
-  const shieldBtn = page.locator('#shield-toggle');
-  if (await shieldBtn.count() > 0) {
-    await shieldBtn.click();
-    console.log('Recording B-Roll: Shield OFF (4s)...');
-    await page.waitForTimeout(4000);
-  }
+  console.log('Launching browser for B-Roll video segments...');
+  const browser = await chromium.launch({ headless: true });
 
-  // Close context (this saves the video)
-  console.log('Saving video...');
-  await context.close();
+  // Scene 1: Initial Attack
+  await recordScene(browser, 'broll-active-attack', async (page) => {
+    await page.waitForTimeout(5000);
+  });
+
+  // Scene 2: Formula Tooltip Hover
+  await recordScene(browser, 'broll-formula-hover', async (page) => {
+    await page.hover('#formula-tooltip-trigger');
+    await page.waitForTimeout(4000);
+    await page.mouse.move(0, 0); // Unhover gap
+    await page.waitForTimeout(1000);
+  });
+
+  // Scene 3: Idle State
+  await recordScene(browser, 'broll-idle', async (page) => {
+    const attackBtn = page.locator('#attack-toggle');
+    if (await attackBtn.count() > 0) {
+      await attackBtn.click();
+      await page.waitForTimeout(4000);
+    }
+  });
+
+  // Scene 4: Shield OFF
+  await recordScene(browser, 'broll-shield-off', async (page) => {
+    const shieldBtn = page.locator('#shield-toggle');
+    if (await shieldBtn.count() > 0) {
+      await shieldBtn.click();
+      await page.waitForTimeout(4000);
+    }
+  });
+
   await browser.close();
-
-  console.log('🎥 B-Roll video saved to docs/assets/');
+  console.log('\n🎉 All separated B-Roll webm clips have been saved to docs/assets/');
 }
 
 main().catch((err) => {
   console.error("Error running script:", err);
   process.exit(1);
 });
+export {};
