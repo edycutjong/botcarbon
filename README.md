@@ -15,27 +15,27 @@
 
 > **Live Attack Dashboard** — Real-time traffic monitoring under DDoS attack:
 
-<video src="https://github.com/user-attachments/assets/ba490dff-a6f7-4e6b-a1e9-e1170a5ccfdc" autoplay loop muted playsinline width="100%"></video>
+<img width="800" height="500" alt="Live Attack Dashboard" src="https://github.com/user-attachments/assets/f09cf9f7-630a-4838-96fe-9c974272846b" />
 
 > **Shield OFF** — Attack traffic consuming wasted compute:
 
-<video src="https://github.com/user-attachments/assets/c5987233-0d0f-4ea3-ae89-6a0c8f1c3c74" autoplay loop muted playsinline width="100%"></video>
+<img width="800" height="500" alt="Shield OFF Mode" src="https://github.com/user-attachments/assets/048fa3c4-ac90-408c-8378-0ec58ff3b0d9" />
 
 > **Carbon Formula** — Transparent methodology: `1 req = 0.12g CO₂`
 
-<video src="https://github.com/user-attachments/assets/b10afa3e-7be0-4992-8410-37a706579943" autoplay loop muted playsinline width="100%"></video>
+<img width="800" height="500" alt="Carbon Formula Tooltip" src="https://github.com/user-attachments/assets/0be5d012-ab67-4052-a1e0-a927c3d299a0" />
 
 > **Attack Origins** — Geographic threat intelligence with intensity-scaled pulses:
 
-<video src="https://github.com/user-attachments/assets/ca54ee49-2d6d-4389-9cb1-c6358739dd70" autoplay loop muted playsinline width="100%"></video>
+<img width="800" height="500" alt="Attack Origins Map" src="https://github.com/user-attachments/assets/77f32391-a641-47e5-9d4c-6e0c73214c75" />
 
 > **Threat Log** — Terminal-style live stream of attack events:
 
-<video src="https://github.com/user-attachments/assets/26ffe1a7-727e-40a1-9e04-e2ae7957a776" autoplay loop muted playsinline width="100%"></video>
+<img width="800" height="500" alt="Threat Log" src="https://github.com/user-attachments/assets/9e8c73aa-af5c-405f-92a2-a9c5c26005b9" />
 
 > **Idle State** — Clean dashboard when no attack is in progress:
 
-<video src="https://github.com/user-attachments/assets/3fc13cc2-50fc-4729-b6ca-895c452f7aee" autoplay loop muted playsinline width="100%"></video>
+<img width="800" height="500" alt="Idle Dashboard" src="https://github.com/user-attachments/assets/5aa26b68-bd5f-4289-b5db-3ce083a6027e" />
 
 ---
 
