@@ -21,6 +21,9 @@ async function main() {
   console.log('Navigating to dashboard (ensure Next.js is running on :3000)...');
   await page.goto('http://localhost:3000/');
 
+  // Hide Next.js dev indicator for clean screenshots
+  await page.addStyleTag({ content: 'nextjs-portal { display: none !important; }' });
+
   // Wait for initial animations to settle
   await page.waitForTimeout(4000);
 

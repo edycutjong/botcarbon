@@ -16,6 +16,8 @@ async function recordScene(browser: any, sceneName: string, action: (page: any) 
 
   const page = await context.newPage();
   await page.goto('http://localhost:3000/');
+  // Hide Next.js dev indicator for clean recordings
+  await page.addStyleTag({ content: 'nextjs-portal { display: none !important; }' });
   await page.waitForTimeout(2000); // let initial animations settle
 
   console.log(`🎥 Recording: ${sceneName}...`);
