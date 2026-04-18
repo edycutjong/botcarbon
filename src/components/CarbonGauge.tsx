@@ -17,12 +17,12 @@ export function CarbonGauge({ carbon, shieldActive }: CarbonGaugeProps) {
       {/* Header */}
       <div className="mb-4">
         <h2
-          className="text-sm font-bold tracking-wider text-[var(--color-text-primary)]"
+          className="text-sm font-bold tracking-wider text-text-primary"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           CARBON SAVINGS
         </h2>
-        <p className="text-[10px] text-[var(--color-text-muted)] font-mono mt-0.5">
+        <p className="text-[10px] text-text-muted font-mono mt-0.5">
           Environmental impact of edge protection
         </p>
       </div>
@@ -38,22 +38,22 @@ export function CarbonGauge({ carbon, shieldActive }: CarbonGaugeProps) {
         >
           <p
             className={`text-4xl md:text-5xl font-black font-mono ${
-              shieldActive ? 'text-[var(--color-green)] glow-green' : 'text-[var(--color-text-muted)]'
+              shieldActive ? 'text-green glow-green' : 'text-text-muted'
             }`}
           >
             {formatCo2(savedCo2Kg)}
           </p>
-          <p className="text-xs text-[var(--color-text-muted)] font-mono mt-1">
+          <p className="text-xs text-text-muted font-mono mt-1">
             CO₂ PREVENTED
           </p>
         </motion.div>
 
         {/* Energy saved */}
-        <div className="mt-4 px-4 py-2 rounded-lg bg-[var(--color-bg-card)] border border-[var(--color-border)] text-center">
-          <p className="text-lg font-bold font-mono text-[var(--color-cyan)]">
+        <div className="mt-4 px-4 py-2 rounded-lg bg-bg-card border border-border text-center">
+          <p className="text-lg font-bold font-mono text-cyan">
             {formatKwh(savedKwh)}
           </p>
-          <p className="text-[10px] text-[var(--color-text-muted)] font-mono">
+          <p className="text-[10px] text-text-muted font-mono">
             ENERGY SAVED
           </p>
         </div>
@@ -61,7 +61,7 @@ export function CarbonGauge({ carbon, shieldActive }: CarbonGaugeProps) {
 
       {/* Equivalencies */}
       <div className="space-y-2 mt-auto">
-        <p className="text-[10px] text-[var(--color-text-muted)] font-mono uppercase tracking-wider mb-2">
+        <p className="text-[10px] text-text-muted font-mono uppercase tracking-wider mb-2">
           Equivalent to:
         </p>
 
@@ -106,17 +106,17 @@ function EquivalencyRow({
   active: boolean;
 }) {
   return (
-    <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-[var(--color-bg-card)] border border-[var(--color-border)]">
+    <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-bg-card border border-border">
       <span className="flex items-center gap-2 text-xs">
         <span>{icon}</span>
-        <span className="text-[var(--color-text-secondary)] font-mono">{label}</span>
+        <span className="text-text-secondary font-mono">{label}</span>
       </span>
       <motion.span
         key={value}
         initial={{ opacity: 0, x: 10 }}
         animate={{ opacity: 1, x: 0 }}
         className={`text-xs font-bold font-mono ${
-          active ? 'text-[var(--color-green)]' : 'text-[var(--color-text-muted)]'
+          active ? 'text-green' : 'text-text-muted'
         }`}
       >
         {value}

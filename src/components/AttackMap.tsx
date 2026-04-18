@@ -25,22 +25,22 @@ export function AttackMap({ events }: AttackMapProps) {
       <div className="flex items-center justify-between mb-3">
         <div>
           <h2
-            className="text-sm font-bold tracking-wider text-[var(--color-text-primary)]"
+            className="text-sm font-bold tracking-wider text-text-primary"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             ATTACK ORIGINS
           </h2>
-          <p className="text-[10px] text-[var(--color-text-muted)] font-mono mt-0.5">
+          <p className="text-[10px] text-text-muted font-mono mt-0.5">
             Geographic threat intelligence
           </p>
         </div>
-        <span className="text-xs font-mono text-[var(--color-text-muted)]">
+        <span className="text-xs font-mono text-text-muted">
           {Object.keys(originCounts).length} sources
         </span>
       </div>
 
       {/* Map area */}
-      <div className="flex-1 relative bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)] overflow-hidden">
+      <div className="flex-1 relative bg-bg-primary rounded-lg border border-border overflow-hidden">
         {/* Simple world map dots (SVG-free, pure CSS positioning) */}
         <div className="absolute inset-0">
           {/* Grid overlay */}
@@ -54,9 +54,9 @@ export function AttackMap({ events }: AttackMapProps) {
           />
 
           {/* Equator line */}
-          <div className="absolute left-0 right-0 top-1/2 h-px bg-[var(--color-cyan)]/10" />
+          <div className="absolute left-0 right-0 top-1/2 h-px bg-cyan/10" />
           {/* Prime meridian */}
-          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-[var(--color-cyan)]/10" />
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-cyan/10" />
 
           {/* Attack origin dots */}
           <AnimatePresence>
@@ -112,9 +112,9 @@ export function AttackMap({ events }: AttackMapProps) {
 
                   {/* Tooltip */}
                   <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                    <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded px-2 py-1 text-[10px] font-mono whitespace-nowrap">
-                      <span className="text-[var(--color-text-primary)]">{origin.label}</span>
-                      <span className="text-[var(--color-red)] ml-1">{count} attacks</span>
+                    <div className="bg-bg-secondary border border-border rounded px-2 py-1 text-[10px] font-mono whitespace-nowrap">
+                      <span className="text-text-primary">{origin.label}</span>
+                      <span className="text-red ml-1">{count} attacks</span>
                     </div>
                   </div>
                 </motion.div>
@@ -124,7 +124,7 @@ export function AttackMap({ events }: AttackMapProps) {
         </div>
 
         {/* Label bottom-right */}
-        <div className="absolute bottom-2 right-2 text-[9px] font-mono text-[var(--color-text-muted)]/50">
+        <div className="absolute bottom-2 right-2 text-[9px] font-mono text-text-muted/50">
           GLOBAL THREAT INTEL
         </div>
       </div>

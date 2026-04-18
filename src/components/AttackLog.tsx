@@ -15,18 +15,18 @@ export function AttackLog({ events, shieldActive }: AttackLogProps) {
       <div className="flex items-center justify-between mb-3">
         <div>
           <h2
-            className="text-sm font-bold tracking-wider text-[var(--color-text-primary)]"
+            className="text-sm font-bold tracking-wider text-text-primary"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             THREAT LOG
           </h2>
-          <p className="text-[10px] text-[var(--color-text-muted)] font-mono mt-0.5">
+          <p className="text-[10px] text-text-muted font-mono mt-0.5">
             Live attack event stream
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <span className={`w-2 h-2 rounded-full ${shieldActive ? 'bg-[var(--color-green)]' : 'bg-[var(--color-red)] blink'}`} />
-          <span className="text-[10px] font-mono text-[var(--color-text-muted)]">
+          <span className={`w-2 h-2 rounded-full ${shieldActive ? 'bg-green' : 'bg-red blink'}`} />
+          <span className="text-[10px] font-mono text-text-muted">
             {events.filter((e) => e.blocked).length} blocked
           </span>
         </div>
@@ -44,17 +44,17 @@ export function AttackLog({ events, shieldActive }: AttackLogProps) {
               transition={{ duration: 0.3 }}
               className={`flex items-center gap-2 px-3 py-1.5 rounded text-[11px] font-mono ${
                 event.blocked
-                  ? 'bg-[var(--color-green-dim)]/50 border-l-2 border-[var(--color-green)]'
-                  : 'bg-[var(--color-red-dim)]/50 border-l-2 border-[var(--color-red)]'
+                  ? 'bg-green-dim/50 border-l-2 border-green'
+                  : 'bg-red-dim/50 border-l-2 border-red'
               }`}
             >
               {/* Status icon */}
-              <span className={event.blocked ? 'text-[var(--color-green)]' : 'text-[var(--color-red)]'}>
+              <span className={event.blocked ? 'text-green' : 'text-red'}>
                 {event.blocked ? '✗' : '⚠'}
               </span>
 
               {/* Timestamp */}
-              <span className="text-[var(--color-text-muted)] w-[60px] shrink-0">
+              <span className="text-text-muted w-[60px] shrink-0">
                 {new Date(event.timestamp).toLocaleTimeString('en-US', {
                   hour12: false,
                   hour: '2-digit',
@@ -67,21 +67,21 @@ export function AttackLog({ events, shieldActive }: AttackLogProps) {
               <span
                 className={`px-1.5 py-0.5 rounded text-[9px] font-semibold shrink-0 ${
                   event.blocked
-                    ? 'bg-[var(--color-green)]/20 text-[var(--color-green)]'
-                    : 'bg-[var(--color-red)]/20 text-[var(--color-red)]'
+                    ? 'bg-green/20 text-green'
+                    : 'bg-red/20 text-red'
                 }`}
               >
                 {event.blocked ? 'BLOCKED' : 'PASSED'}
               </span>
 
               {/* Attack type */}
-              <span className="text-[var(--color-amber)] shrink-0">{event.type}</span>
+              <span className="text-amber shrink-0">{event.type}</span>
 
               {/* Path */}
-              <span className="text-[var(--color-text-muted)] truncate">{event.path}</span>
+              <span className="text-text-muted truncate">{event.path}</span>
 
               {/* IP */}
-              <span className="text-[var(--color-text-muted)] ml-auto shrink-0 hidden lg:block">
+              <span className="text-text-muted ml-auto shrink-0 hidden lg:block">
                 {event.ip}
               </span>
 
@@ -89,8 +89,8 @@ export function AttackLog({ events, shieldActive }: AttackLogProps) {
               <span
                 className={`shrink-0 ${
                   event.responseTimeMs < 10
-                    ? 'text-[var(--color-green)]'
-                    : 'text-[var(--color-red)]'
+                    ? 'text-green'
+                    : 'text-red'
                 }`}
               >
                 {event.responseTimeMs}ms

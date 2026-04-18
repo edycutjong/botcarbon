@@ -14,28 +14,28 @@ interface MetricCardProps {
 
 const colorMap = {
   cyan: {
-    text: 'text-[var(--color-cyan)]',
+    text: 'text-cyan',
     glow: 'glow-cyan',
-    bg: 'bg-[var(--color-cyan-dim)]',
-    border: 'border-[var(--color-cyan)]/20',
+    bg: 'bg-cyan-dim',
+    border: 'border-cyan/20',
   },
   green: {
-    text: 'text-[var(--color-green)]',
+    text: 'text-green',
     glow: 'glow-green',
-    bg: 'bg-[var(--color-green-dim)]',
-    border: 'border-[var(--color-green)]/20',
+    bg: 'bg-green-dim',
+    border: 'border-green/20',
   },
   red: {
-    text: 'text-[var(--color-red)]',
+    text: 'text-red',
     glow: 'glow-red',
-    bg: 'bg-[var(--color-red-dim)]',
-    border: 'border-[var(--color-red)]/20',
+    bg: 'bg-red-dim',
+    border: 'border-red/20',
   },
   amber: {
-    text: 'text-[var(--color-amber)]',
+    text: 'text-amber',
     glow: 'glow-amber',
-    bg: 'bg-[var(--color-amber-dim)]',
-    border: 'border-[var(--color-amber)]/20',
+    bg: 'bg-amber-dim',
+    border: 'border-amber/20',
   },
 };
 
@@ -49,7 +49,7 @@ export function MetricCard({ id, label, value, icon, color, subtitle, highlight 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={`glass-card gradient-border p-5 relative overflow-hidden ${
-        highlight ? 'ring-1 ring-[var(--color-green)]/30' : ''
+        highlight ? 'ring-1 ring-green/30' : ''
       }`}
     >
       {/* Icon */}
@@ -58,7 +58,7 @@ export function MetricCard({ id, label, value, icon, color, subtitle, highlight 
       </div>
 
       {/* Label */}
-      <p className="text-xs font-mono text-[var(--color-text-muted)] uppercase tracking-wider mb-1">
+      <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-1">
         {label}
       </p>
 
@@ -75,14 +75,14 @@ export function MetricCard({ id, label, value, icon, color, subtitle, highlight 
 
       {/* Subtitle */}
       {subtitle && (
-        <p className="text-xs text-[var(--color-text-muted)] font-mono mt-1">
+        <p className="text-xs text-text-muted font-mono mt-1">
           {subtitle}
         </p>
       )}
 
       {/* Ambient glow on highlight */}
       {highlight && (
-        <div className="absolute -bottom-8 -right-8 w-24 h-24 rounded-full bg-[var(--color-green)]/10 blur-2xl" />
+        <div className="absolute -bottom-8 -right-8 w-24 h-24 rounded-full bg-green/10 blur-2xl" />
       )}
     </motion.div>
   );

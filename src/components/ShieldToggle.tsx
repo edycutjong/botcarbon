@@ -19,8 +19,8 @@ export function ShieldToggle({ active, onToggle }: ShieldToggleProps) {
       <div
         className={`relative w-16 h-8 rounded-full transition-all duration-500 ${
           active
-            ? 'bg-gradient-to-r from-[var(--color-green)]/30 to-[var(--color-cyan)]/30 shadow-lg shadow-[var(--color-green)]/20'
-            : 'bg-[var(--color-bg-card)] border border-[var(--color-border)]'
+            ? 'bg-gradient-to-r from-green/30 to-cyan/30 shadow-lg shadow-(--color-green)/20'
+            : 'bg-bg-card border border-border'
         }`}
       >
         {/* Toggle knob */}
@@ -29,8 +29,8 @@ export function ShieldToggle({ active, onToggle }: ShieldToggleProps) {
           transition={{ type: 'spring', stiffness: 500, damping: 30 }}
           className={`absolute top-1 left-1 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors duration-300 ${
             active
-              ? 'bg-[var(--color-green)] text-white shadow-lg shadow-[var(--color-green)]/30'
-              : 'bg-[var(--color-text-muted)] text-[var(--color-bg-primary)]'
+              ? 'bg-green text-white shadow-lg shadow-(--color-green)/30'
+              : 'bg-text-muted text-bg-primary'
           }`}
         >
           {active ? '✓' : '×'}
@@ -41,13 +41,13 @@ export function ShieldToggle({ active, onToggle }: ShieldToggleProps) {
       <div className="flex flex-col items-start">
         <span
           className={`text-sm font-bold tracking-wider transition-colors duration-300 ${
-            active ? 'text-[var(--color-green)] glow-green' : 'text-[var(--color-text-secondary)]'
+            active ? 'text-green glow-green' : 'text-text-secondary'
           }`}
           style={{ fontFamily: 'var(--font-display)' }}
         >
           {active ? 'SHIELD ON' : 'SHIELD OFF'}
         </span>
-        <span className="text-[10px] text-[var(--color-text-muted)] font-mono">
+        <span className="text-[10px] text-text-muted font-mono">
           {active ? 'Cloudflare Edge Protection Active' : 'Click to enable edge filtering'}
         </span>
       </div>
@@ -59,8 +59,8 @@ export function ShieldToggle({ active, onToggle }: ShieldToggleProps) {
           animate={{ scale: 1 }}
           className="relative ml-1"
         >
-          <div className="w-3 h-3 rounded-full bg-[var(--color-green)]">
-            <div className="absolute inset-0 rounded-full bg-[var(--color-green)] animate-ping opacity-40" />
+          <div className="w-3 h-3 rounded-full bg-green">
+            <div className="absolute inset-0 rounded-full bg-green animate-ping opacity-40" />
           </div>
         </motion.div>
       )}
