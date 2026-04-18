@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="0" fill="#0f172a"/>
+  <!-- Cyan glowing shield -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <path d="M256 72c-48 0-120 32-152 48v128c0 88 64 168 152 208 88-40 152-120 152-208V120C376 104 304 72 256 72z"
+        fill="none" stroke="#06b6d4" stroke-width="20" stroke-linejoin="round" filter="url(#glow)"/>
+  <!-- Green leaf with stem and veins -->
+  <ellipse cx="256" cy="280" rx="48" ry="72" fill="#22c55e" transform="rotate(-5 256 280)"/>
+  <line x1="256" y1="210" x2="256" y2="360" stroke="#0f172a" stroke-width="4" stroke-linecap="round"/>
+  <line x1="256" y1="245" x2="234" y2="260" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+  <line x1="256" y1="245" x2="278" y2="260" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+  <line x1="256" y1="270" x2="237" y2="288" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+  <line x1="256" y1="270" x2="275" y2="288" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+  <line x1="256" y1="295" x2="240" y2="312" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+  <line x1="256" y1="295" x2="272" y2="312" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+</svg>

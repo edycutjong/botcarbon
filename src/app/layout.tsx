@@ -41,6 +41,24 @@ export const metadata: Metadata = {
     description:
       "Quantify the CO₂ emissions caused by malicious bot traffic. Edge analytics for sustainable cybersecurity.",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "BotCarbon — Cybersecurity x SDG 13",
+      },
+    ],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", sizes: "1024x1024", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
