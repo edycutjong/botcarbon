@@ -42,3 +42,4 @@ yarn-error.log*
 next-env.d.ts
 /docs/assets/*
 !/docs/assets/.keep
+test_output.log
