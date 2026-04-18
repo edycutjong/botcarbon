@@ -92,8 +92,8 @@ export function AttackMap({ events }: AttackMapProps) {
 
               return (
                 <Marker key={origin.id} coordinates={origin.coordinates as [number, number]}>
-                  {/* Outer group using standard CSS animation for fade-in */}
-                  <g className="group animate-in fade-in duration-1000 fill-mode-both" style={{ animationDelay: `${Math.random() * 0.5}s` }}>
+                  {/* Outer group using standard CSS animation for fade-in without transforms */}
+                  <g className="group map-marker-fade" style={{ animationDelay: `${Math.random() * 0.5}s` }}>
                     {/* Pulse ring outer invisible wrapper for hover */}
                     <circle cx={0} cy={0} r={16} fill="transparent" className="cursor-crosshair" />
 

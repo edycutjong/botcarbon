@@ -185,6 +185,17 @@ body {
   animation: blink 1.5s ease-in-out infinite;
 }
 
+/* Map marker safe fade-in (avoids SVG transform-origin bugs) */
+@keyframes map-marker-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.map-marker-fade {
+  opacity: 0;
+  animation: map-marker-fade-in 1s ease-in-out forwards;
+}
+
 /* ========================================
    Animations — Wow Factor
    ======================================== */
