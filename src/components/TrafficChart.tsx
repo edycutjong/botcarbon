@@ -34,16 +34,16 @@ export function ChartTooltip({ active, payload, label }: ChartTooltipProps) {
   if (!active || !payload?.length) return null;
 
   return (
-    <div className="glass-card p-3 text-xs font-mono border border-[var(--color-border)]">
-      <p className="text-[var(--color-text-secondary)] mb-2">{label}</p>
+    <div className="glass-card p-3 text-xs font-mono border border-border">
+      <p className="text-text-secondary mb-2">{label}</p>
       {payload.map((entry) => (
         <div key={entry.name} className="flex items-center gap-2 mb-1">
           <span
             className="w-2 h-2 rounded-full"
             style={{ background: entry.color }}
           />
-          <span className="text-[var(--color-text-secondary)]">{entry.name}:</span>
-          <span className="text-[var(--color-text-primary)] font-semibold">
+          <span className="text-text-secondary">{entry.name}:</span>
+          <span className="text-text-primary font-semibold">
             {entry.value.toLocaleString()}
           </span>
         </div>
@@ -59,23 +59,23 @@ export function TrafficChart({ data, shieldActive }: TrafficChartProps) {
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2
-            className="text-sm font-bold tracking-wider text-[var(--color-text-primary)]"
+            className="text-sm font-bold tracking-wider text-text-primary"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             TRAFFIC MONITOR
           </h2>
-          <p className="text-[10px] text-[var(--color-text-muted)] font-mono mt-0.5">
+          <p className="text-[10px] text-text-muted font-mono mt-0.5">
             Real-time request analysis • 2s intervals
           </p>
         </div>
         <div className="flex items-center gap-4 text-[10px] font-mono">
           <span className="flex items-center gap-1.5">
-            <span className="w-2.5 h-1 rounded bg-[var(--color-red)]" />
-            <span className="text-[var(--color-text-muted)]">Blocked</span>
+            <span className="w-2.5 h-1 rounded bg-red" />
+            <span className="text-text-muted">Blocked</span>
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-2.5 h-1 rounded bg-[var(--color-cyan)]" />
-            <span className="text-[var(--color-text-muted)]">Passed</span>
+            <span className="w-2.5 h-1 rounded bg-cyan" />
+            <span className="text-text-muted">Passed</span>
           </span>
         </div>
       </div>
@@ -139,11 +139,11 @@ export function TrafficChart({ data, shieldActive }: TrafficChartProps) {
       <div
         className={`mt-3 px-3 py-2 rounded-lg text-[10px] font-mono flex items-center gap-2 transition-all duration-500 ${
           shieldActive
-            ? 'bg-[var(--color-green-dim)] text-[var(--color-green)] border border-[var(--color-green)]/20'
-            : 'bg-[var(--color-red-dim)] text-[var(--color-red)] border border-[var(--color-red)]/20'
+            ? 'bg-green-dim text-green border border-green/20'
+            : 'bg-red-dim text-red border border-red/20'
         }`}
       >
-        <span className={`w-2 h-2 rounded-full ${shieldActive ? 'bg-[var(--color-green)]' : 'bg-[var(--color-red)] blink'}`} />
+        <span className={`w-2 h-2 rounded-full ${shieldActive ? 'bg-green' : 'bg-red blink'}`} />
         {shieldActive
           ? '✓ Cloudflare Edge Shield filtering 95% of malicious traffic'
           : '⚠ Unprotected — malicious requests consuming server resources'}

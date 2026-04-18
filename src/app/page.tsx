@@ -16,7 +16,7 @@ import {
   type AttackEvent,
   type TrafficDataPoint,
 } from '@/lib/mock-data';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 
 export default function DashboardPage() {
   // ---- State (lazy initializers) ----
@@ -28,8 +28,6 @@ export default function DashboardPage() {
   const [attackLog, setAttackLog] = useState<AttackEvent[]>(() =>
     generateAttackBatch(15, false)
   );
-  const [totalBlocked, setTotalBlocked] = useState(0);
-  const [totalRequests, setTotalRequests] = useState(0);
 
   // Ref to track shield state in intervals
   const shieldRef = useRef(shieldActive);
@@ -44,17 +42,18 @@ export default function DashboardPage() {
   }, [isUnderAttack]);
 
   // ---- Cumulative totals from traffic data ----
-  useEffect(() => {
-    const totals = trafficData.reduce(
+  const totals = useMemo(() => {
+    return trafficData.reduce(
       (acc, point) => ({
         blocked: acc.blocked + point.blocked,
         total: acc.total + point.total,
       }),
       { blocked: 0, total: 0 }
     );
-    setTotalBlocked(totals.blocked);
-    setTotalRequests(totals.total);
   }, [trafficData]);
+  
+  const totalBlocked = totals.blocked;
+  const totalRequests = totals.total;
 
   // ---- Real-time traffic simulation ----
   useEffect(() => {
