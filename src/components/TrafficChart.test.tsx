@@ -51,4 +51,6 @@ describe('TrafficChart component', () => {
       expect(screen.getByText('100')).toBeInTheDocument();
     });
   });
+
+
 });
