@@ -1,12 +1,29 @@
-# 🌍 BotCarbon — The Carbon Cost of Cyber Attacks
+<div align="center">
+  <h1>🌍 BotCarbon</h1>
+  <p><em>Quantifying the carbon cost of cyber attacks — turning cybersecurity into a verifiable ESG metric.</em></p>
 
-> **HackOWASP 8.0** | SDG 13 (Climate Action) × Cybersecurity | April 18-19, 2026
+  [![Live Demo](https://img.shields.io/badge/Demo-Live-22c55e?style=for-the-badge)](https://botcarbon.vercel.app)
+  [![Demo Video](https://img.shields.io/badge/Demo-Video-ef4444?style=for-the-badge&logo=youtube)](https://youtube.com/watch?v=YOUR_VIDEO_ID)
+  [![HackOWASP 8.0](https://img.shields.io/badge/HackOWASP-8.0-06b6d4?style=for-the-badge)](https://hackowasp.com)
 
-An edge analytics dashboard that quantifies the **wasted electricity and CO₂ emissions** caused by malicious bot traffic — turning cybersecurity into a verifiable ESG metric.
+  **SDG 13 (Climate Action) × Cybersecurity** | April 18–19, 2026
+</div>
 
-[![Live Demo](https://img.shields.io/badge/Demo-Live-22c55e?style=for-the-badge)](https://botcarbon.vercel.app)
-[![Tech](https://img.shields.io/badge/Next.js-16-000?style=for-the-badge&logo=nextdotjs)](https://nextjs.org)
-[![Edge](https://img.shields.io/badge/Cloudflare-Edge-F38020?style=for-the-badge&logo=cloudflare)](https://cloudflare.com)
+---
+
+## 📸 See It in Action
+
+> **Shield OFF** — Attack traffic consuming wasted compute:
+
+![Dashboard under attack — shield off](public/dashboard-shield-off.png)
+
+> **Shield ON** — Cloudflare Edge filtering 95% of malicious traffic:
+
+![Dashboard protected — shield on](public/dashboard-shield-on.png)
+
+> **Attack Origins + Threat Log** — Real-time geographic threat intelligence:
+
+![Attack map and threat log](public/dashboard-attack-log.png)
 
 ---
 
@@ -55,27 +72,35 @@ CO₂ per blocked req:    0.12g
 
 ## 🏗️ Architecture
 
+![Architecture Diagram](docs/architecture.png)
+
+## 📁 File Structure
+
 ```
-┌──────────────────────────────────────────┐
-│          Next.js 16 Dashboard            │
-│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐   │
-│  │Metric│ │Chart │ │Carbon│ │Attack│   │
-│  │Cards │ │      │ │Gauge │ │ Log  │   │
-│  └──────┘ └──────┘ └──────┘ └──────┘   │
-│           ┌────────────┐                 │
-│           │Shield Toggle│                │
-│           └──────┬─────┘                 │
-└──────────────────┼───────────────────────┘
-                   │
-        ┌──────────┴──────────┐
-        │  Cloudflare Edge    │  ← Sponsor Integration
-        │  (Edge Filtering)   │
-        └──────────┬──────────┘
-                   │
-         ┌─────────┴─────────┐
-         │  Python Simulator  │  ← DDoS / Brute Force
-         │  (attack.py)       │
-         └────────────────────┘
+botcarbon/
+├── src/
+│   ├── app/                # Next.js 16 App Router
+│   │   ├── layout.tsx      # Root layout (fonts, metadata, SEO)
+│   │   ├── page.tsx        # Main SOC dashboard page
+│   │   └── globals.css     # Design system (glassmorphism, glow, grid)
+│   ├── components/         # 8 dashboard components
+│   │   ├── TrafficChart    # Real-time Recharts area chart
+│   │   ├── CarbonGauge     # CO₂ savings + equivalencies
+│   │   ├── ShieldToggle    # Cloudflare edge toggle
+│   │   ├── AttackMap       # Geographic threat origins
+│   │   ├── AttackLog       # Terminal-style event stream
+│   │   ├── FormulaTooltip  # Methodology transparency
+│   │   ├── MetricCard      # Glowing stat cards
+│   │   └── Header          # SOC-style nav bar
+│   └── lib/                # Shared utilities
+│       ├── carbon.ts       # CO₂ math (SWD Model)
+│       ├── constants.ts    # Attack types, thresholds
+│       └── mock-data.ts    # Real-time data generation
+├── scripts/
+│   └── attack.py           # DDoS simulator (Python)
+├── public/                 # Screenshots, logos
+├── .env.example            # Environment template
+└── package.json
 ```
 
 ## ⚡ Tech Stack
@@ -86,26 +111,38 @@ CO₂ per blocked req:    0.12g
 | **Styling** | Tailwind CSS v4 |
 | **Charts** | Recharts |
 | **Animations** | Framer Motion |
-| **Edge** | Cloudflare Workers |
+| **Edge** | Cloudflare Edge (simulated) |
 | **Fonts** | Inter, JetBrains Mono, Orbitron |
 | **Deploy** | Vercel |
 
-## 🚀 Quick Start
+## 🏆 Sponsor Tracks Targeted
+
+- **Cloudflare (Technical Partner)**: Edge Shield simulation in [`src/components/ShieldToggle.tsx`](src/components/ShieldToggle.tsx). Carbon offset calculations in [`src/lib/carbon.ts`](src/lib/carbon.ts). Attack filtering logic driven by shield state throughout the dashboard.
+- **SDG 13 — Climate Action**: Core formula (`1 req = 0.12g CO₂`) from the Sustainable Web Design Model, implemented in [`src/lib/carbon.ts`](src/lib/carbon.ts).
+- **Cybersecurity (OWASP-aligned)**: 8 attack types simulated (DDoS, SQL Injection, XSS, Brute Force, Credential Stuffing, etc.) — see [`scripts/attack.py`](scripts/attack.py).
+
+## 🚀 Run It Locally (For Judges)
 
 ```bash
-# Clone
+# 1. Clone
 git clone https://github.com/edycutjong/botcarbon.git
 cd botcarbon
 
-# Install
+# 2. Install
 npm install
 
-# Run
+# 3. Set up env (optional — app works without any keys)
+cp .env.example .env.local
+
+# 4. Run
 npm run dev
 # → http://localhost:3000
 ```
 
-### Run the Attack Simulator
+> **📌 Note for Judges:**
+> No API keys, accounts, or setup required! The dashboard runs entirely client-side with simulated real-time data. Just `npm run dev` and you're live.
+
+### Run the Attack Simulator (Optional)
 
 ```bash
 # In a separate terminal
@@ -134,4 +171,6 @@ MIT — Built for HackOWASP 8.0
 
 ---
 
-**BotCarbon** — *Cybersecurity IS Sustainability* 🌍🛡️
+<div align="center">
+  <strong>BotCarbon</strong> — <em>Cybersecurity IS Sustainability</em> 🌍🛡️
+</div>
