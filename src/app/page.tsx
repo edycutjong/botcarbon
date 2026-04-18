@@ -23,7 +23,8 @@ export default function DashboardPage() {
   const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
-    setMounted(true);
+    const t = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(t);
   }, []);
 
   const [shieldActive, setShieldActive] = useState(false);
@@ -113,8 +114,8 @@ export default function DashboardPage() {
               onClick={handleAttackToggle}
               className={`px-4 py-2 rounded-lg text-sm font-mono font-medium transition-all duration-300 ${
                 isUnderAttack
-                  ? 'bg-[var(--color-red-dim)] text-[var(--color-red)] border border-[var(--color-red)]/30'
-                  : 'bg-[var(--color-bg-card)] text-[var(--color-text-secondary)] border border-[var(--color-border)]'
+                  ? 'bg-red-dim text-red border border-red/30'
+                  : 'bg-bg-card text-text-secondary border border-border'
               }`}
             >
               {isUnderAttack ? '🔴 ATTACK ACTIVE' : '⚪ Idle'}
@@ -181,11 +182,11 @@ export default function DashboardPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[var(--color-border)] py-4 px-6">
-        <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-[var(--color-text-muted)] font-mono">
+      <footer className="border-t border-border py-4 px-6">
+        <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-text-muted font-mono">
           <span>BotCarbon — HackOWASP 8.0 | SDG 13 × Cybersecurity</span>
           <span className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-cyan)] blink" />
+            <span className="inline-block w-2 h-2 rounded-full bg-cyan blink" />
             Powered by Cloudflare Edge Network
           </span>
         </div>
