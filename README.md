@@ -3,7 +3,7 @@
   <p><em>Quantifying the carbon cost of cyber attacks — turning cybersecurity into a verifiable ESG metric.</em></p>
 
   [![Live Demo](https://img.shields.io/badge/Demo-Live-22c55e?style=for-the-badge)](https://botcarbon.edycu.dev)
-  [![Demo Video](https://img.shields.io/badge/Demo-Video-ef4444?style=for-the-badge&logo=youtube)](https://youtube.com/watch?v=YOUR_VIDEO_ID)
+  [![Demo Video](https://img.shields.io/badge/Demo-Video-ef4444?style=for-the-badge&logo=youtube)](https://youtu.be/g1sFJ03S0RY)
   [![HackOWASP 8.0](https://img.shields.io/badge/HackOWASP-8.0-06b6d4?style=for-the-badge)](https://hackowasp.com)
 
   **SDG 13 (Climate Action) × Cybersecurity** | April 18–19, 2026
