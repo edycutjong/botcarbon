@@ -4,7 +4,7 @@
 
   [![Live Demo](https://img.shields.io/badge/Demo-Live-22c55e?style=for-the-badge)](https://botcarbon.edycu.dev)
   [![Demo Video](https://img.shields.io/badge/Demo-Video-ef4444?style=for-the-badge&logo=youtube)](https://youtu.be/g1sFJ03S0RY)
-  [![HackOWASP 8.0](https://img.shields.io/badge/HackOWASP-8.0-06b6d4?style=for-the-badge)](https://hackowasp.com)
+  [![HackOWASP 8.0](https://img.shields.io/badge/HackOWASP-8.0-06b6d4?style=for-the-badge)](https://hack.owasptiet.com/)
   [![DoraHacks BUIDL](https://img.shields.io/badge/DoraHacks-BUIDL-8b5cf6?style=for-the-badge)](https://dorahacks.io/buidl/43221)
 
   **SDG 13 (Climate Action) × Cybersecurity** | April 18–19, 2026
