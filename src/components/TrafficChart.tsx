@@ -30,7 +30,7 @@ interface ChartTooltipProps {
 }
 
 /** Custom tooltip — declared outside render function per project pattern */
-function ChartTooltip({ active, payload, label }: ChartTooltipProps) {
+export function ChartTooltip({ active, payload, label }: ChartTooltipProps) {
   if (!active || !payload?.length) return null;
 
   return (
