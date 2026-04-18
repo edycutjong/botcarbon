@@ -23,7 +23,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="border-b border-border bg-bg-secondary/50 backdrop-blur-md sticky top-0 z-50 relative overflow-hidden header-sweep">
+    <header className="border-b border-border bg-bg-secondary/50 backdrop-blur-md sticky top-0 z-50 overflow-hidden header-sweep">
       <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between relative z-10">
         {/* Logo + Title */}
         <div className="flex items-center gap-3">

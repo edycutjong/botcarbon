@@ -89,7 +89,7 @@ export function ThreatLevel({ isUnderAttack, shieldActive, blockedPercentage }: 
       {/* Animated threat bar */}
       <div className="mt-2 h-1 rounded-full bg-bg-primary overflow-hidden">
         <motion.div
-          className={`h-full rounded-full bg-gradient-to-r ${config.colorClass}`}
+          className={`h-full rounded-full bg-linear-to-r ${config.colorClass}`}
           initial={{ width: '0%' }}
           animate={{ width: config.barWidth(blockedPercentage) }}
           transition={{ duration: 1, ease: 'easeOut' }}
