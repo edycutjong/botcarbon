@@ -19,6 +19,9 @@ const config: Config = {
     '!src/**/*.d.ts',
   ],
   coverageReporters: ['json-summary', 'text', 'lcov'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!(d3-color|d3-zoom|d3-interpolate|react-simple-maps)/)'
+  ],
 };
 
 export default createJestConfig(config);
