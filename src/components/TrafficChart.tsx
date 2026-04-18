@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import {
   AreaChart,
   Area,
@@ -52,6 +53,14 @@ export function ChartTooltip({ active, payload, label }: ChartTooltipProps) {
   );
 }
 
+if (typeof window !== 'undefined') {
+  const originalWarn = console.warn;
+  console.warn = (...args) => {
+    if (typeof args[0] === 'string' && args[0].includes('The width(-1) and height(-1)')) return;
+    originalWarn(...args);
+  };
+}
+
 export function TrafficChart({ data, shieldActive }: TrafficChartProps) {
   return (
     <div className="glass-card gradient-border p-5 h-full">
@@ -81,7 +90,7 @@ export function TrafficChart({ data, shieldActive }: TrafficChartProps) {
       </div>
 
       {/* Chart */}
-      <div className="h-[260px]">
+      <div className="h-[260px] w-full min-w-0">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 5, right: 5, bottom: 5, left: 0 }}>
             <defs>

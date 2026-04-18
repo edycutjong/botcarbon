@@ -20,6 +20,12 @@ import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 
 export default function DashboardPage() {
   // ---- State (lazy initializers) ----
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const [shieldActive, setShieldActive] = useState(false);
   const [isUnderAttack, setIsUnderAttack] = useState(true);
   const [trafficData, setTrafficData] = useState<TrafficDataPoint[]>(() =>
@@ -84,6 +90,14 @@ export default function DashboardPage() {
 
   // ---- Carbon calculations ----
   const carbon = calculateCarbon(totalRequests, totalBlocked);
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col">

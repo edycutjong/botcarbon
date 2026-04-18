@@ -52,6 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`dark ${inter.variable} ${jetbrainsMono.variable} ${orbitron.variable}`}
     >
       <body className="min-h-screen bg-grid antialiased">

@@ -57,7 +57,7 @@ export function generateAttackEvent(shieldActive: boolean): AttackEvent {
   const blocked = shieldActive ? Math.random() > 0.05 : Math.random() > 0.7;
 
   return {
-    id: crypto.randomUUID(),
+    id: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
     timestamp: Date.now(),
     type,
     origin: origin.label,
