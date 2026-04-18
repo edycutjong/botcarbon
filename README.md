@@ -13,17 +13,29 @@
 
 ## 📸 See It in Action
 
+> **Live Attack Dashboard** — Real-time traffic monitoring under DDoS attack:
+
+<video src="https://github.com/user-attachments/assets/ba490dff-a6f7-4e6b-a1e9-e1170a5ccfdc" autoplay loop muted playsinline width="100%"></video>
+
 > **Shield OFF** — Attack traffic consuming wasted compute:
 
-![Dashboard under attack — shield off](public/dashboard-shield-off.png)
+<video src="https://github.com/user-attachments/assets/c5987233-0d0f-4ea3-ae89-6a0c8f1c3c74" autoplay loop muted playsinline width="100%"></video>
 
-> **Shield ON** — Cloudflare Edge filtering 95% of malicious traffic:
+> **Carbon Formula** — Transparent methodology: `1 req = 0.12g CO₂`
 
-![Dashboard protected — shield on](public/dashboard-shield-on.png)
+<video src="https://github.com/user-attachments/assets/b10afa3e-7be0-4992-8410-37a706579943" autoplay loop muted playsinline width="100%"></video>
 
-> **Attack Origins + Threat Log** — Real-time geographic threat intelligence:
+> **Attack Origins** — Geographic threat intelligence with intensity-scaled pulses:
 
-![Attack map and threat log](public/dashboard-attack-log.png)
+<video src="https://github.com/user-attachments/assets/ca54ee49-2d6d-4389-9cb1-c6358739dd70" autoplay loop muted playsinline width="100%"></video>
+
+> **Threat Log** — Terminal-style live stream of attack events:
+
+<video src="https://github.com/user-attachments/assets/26ffe1a7-727e-40a1-9e04-e2ae7957a776" autoplay loop muted playsinline width="100%"></video>
+
+> **Idle State** — Clean dashboard when no attack is in progress:
+
+<video src="https://github.com/user-attachments/assets/3fc13cc2-50fc-4729-b6ca-895c452f7aee" autoplay loop muted playsinline width="100%"></video>
 
 ---
 
