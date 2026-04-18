@@ -57,13 +57,13 @@ export const SEVERITY = {
 
 /** Attack origins for the world map */
 export const ATTACK_ORIGINS = [
-  { id: 'us', label: 'United States', x: 22, y: 38, weight: 0.15 },
-  { id: 'cn', label: 'China', x: 78, y: 35, weight: 0.25 },
-  { id: 'ru', label: 'Russia', x: 65, y: 25, weight: 0.20 },
-  { id: 'br', label: 'Brazil', x: 32, y: 65, weight: 0.08 },
-  { id: 'in', label: 'India', x: 72, y: 42, weight: 0.10 },
-  { id: 'de', label: 'Germany', x: 52, y: 30, weight: 0.05 },
-  { id: 'ng', label: 'Nigeria', x: 50, y: 50, weight: 0.07 },
-  { id: 'kr', label: 'South Korea', x: 82, y: 36, weight: 0.05 },
-  { id: 'ua', label: 'Ukraine', x: 58, y: 30, weight: 0.05 },
+  { id: 'us', label: 'United States', coordinates: [-95.7129, 37.0902], weight: 0.15 },
+  { id: 'cn', label: 'China', coordinates: [104.1954, 35.8617], weight: 0.25 },
+  { id: 'ru', label: 'Russia', coordinates: [105.3188, 61.5240], weight: 0.20 },
+  { id: 'br', label: 'Brazil', coordinates: [-51.9253, -14.2350], weight: 0.08 },
+  { id: 'in', label: 'India', coordinates: [78.9629, 20.5937], weight: 0.10 },
+  { id: 'de', label: 'Germany', coordinates: [10.4515, 51.1657], weight: 0.05 },
+  { id: 'ng', label: 'Nigeria', coordinates: [8.6753, 9.0820], weight: 0.07 },
+  { id: 'kr', label: 'South Korea', coordinates: [127.7669, 35.9078], weight: 0.05 },
+  { id: 'ua', label: 'Ukraine', coordinates: [31.1656, 48.3794], weight: 0.05 },
 ] as const;
