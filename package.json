@@ -11,7 +11,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "ci": "npm run lint && npm run typecheck && npm run test:coverage",
-    "broll": "ts-node scripts/record-broll.ts"
+    "broll": "ts-node scripts/record-broll.ts",
+    "screenshots": "ts-node scripts/take-screenshots.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.103.3",
